@@ -1,0 +1,27 @@
+{
+  "name": "mvctemplatemysql",
+  "version": "1.0.0",
+  "description": "MVC Template using Nodejs, Sequelize, Expressjs, and MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BantuLab/MVCTemplateMySQL.git"
+  },
+  "keywords": [
+    "mvc",
+    "mysql",
+    "nodejs",
+    "express",
+    "api",
+    "sequelize"
+  ],
+  "author": "Chaiwa Berian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BantuLab/MVCTemplateMySQL/issues"
+  },
+  "homepage": "https://github.com/BantuLab/MVCTemplateMySQL#readme"
+}
