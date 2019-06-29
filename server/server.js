@@ -19,19 +19,26 @@ try{
 	console.log('Error loading environment variables', error.message);
 }
 //Connet to the database
-const connection = new Sequelize(process.env.DATABASE_NAME, process.env.USER_NAME, process.env.USER_PASSWORD, {
+const db_connection = new Sequelize(process.env.DATABASE_NAME, process.env.USER_NAME, process.env.USER_PASSWORD, {
     dialect: 'mysql'
 });
 //Test connection to the database
-connection.authenticate()
+db_connection.authenticate()
     .then(()=>{
-        console.log('Connection has been established successfully.');
+        console.log('Database connection has been established successfully.');
     })
     .catch((err)=>{
         console.error('Unable to connect to the database:', err);
     });
 //Load routes
-require('./router')(app, connection);
+require('./router')(app, db_connection);
+//Close Database Connection when App process closes
+process.on('SIGINT', function(){
+	db_connection.close(function(){
+		console.log('Database connection closed due to process termination');
+		process.exit(0);
+	});
+});
 //Setup server connection
 let PORT = process.env.PORT || 3000;
 let server = app.listen(PORT, ()=>{
